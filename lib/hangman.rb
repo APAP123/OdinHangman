@@ -36,7 +36,7 @@ class Hangman
     letters_guessed.append(letter)
     word_array = @chosen_word.split(//)
     word_array.each_with_index do |char, index|
-      puts "char: #{char}, index: #{index} letter: #{letter}"
+      # puts "char: #{char}, index: #{index} letter: #{letter}" # Debug output
       if char == letter
         correct_guess = true
         @correct_characters[index] = letter
@@ -94,6 +94,24 @@ def verify_file
   end
 end
 
+# Draws the hangman to screen
+def draw_hangman(wrong_guesses)
+  wrong_guesses >= 1 ? head = 'O' : head = ' ' 
+  wrong_guesses >= 2 ? body = '|' : body = ' '
+  wrong_guesses >= 3 ? left_arm = '-' : left_arm = ' '
+  wrong_guesses >= 4 ? right_arm = '-' : right_arm = ' '
+  wrong_guesses >= 5 ? left_leg = '/' : left_leg = ' '
+  wrong_guesses >= 6 ? right_leg = '\\' : right_leg = ' '
+
+  puts '                   |¯¯¯¯¯¯|'
+  puts '                   ' + head + '      |'
+  puts '                  ' + left_arm + body + right_arm + '     |'
+  puts '                  ' + left_leg + ' ' + right_leg + '     |'
+  puts '                          |'
+  puts '                          |'
+  puts '             |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|'
+end
+
 hangman = Hangman.new
 
 while true
@@ -113,6 +131,7 @@ end
 while true
   # Command to draw goes here
 
+  draw_hangman(hangman.wrong_guesses)
   break if hangman.game_over?
 
   puts "Word so far: #{hangman.correct_characters}"
