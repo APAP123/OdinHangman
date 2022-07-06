@@ -36,7 +36,6 @@ class Hangman
     letters_guessed.append(letter)
     word_array = @chosen_word.split(//)
     word_array.each_with_index do |char, index|
-      # puts "char: #{char}, index: #{index} letter: #{letter}" # Debug output
       if char == letter
         correct_guess = true
         @correct_characters[index] = letter
@@ -126,8 +125,6 @@ while true
   end
 end
 
-# puts "Word is #{hangman.chosen_word}"
-
 while true
   # Command to draw goes here
 
@@ -155,20 +152,3 @@ while true
 end
 
 puts 'Thanks for playing!'
-
-# Still to do:
-# - Draw the hangman himself
-# - Check for win and lose conditions (done)
-# - (optional?) When loading and saving game, let user specify file name (done)
-
-# Player is first asked whether they'd like to load a game or start a new one
-# Hangman boardstate is drawn to screen (the hangman himself, the guessed letters, the incorrect letters, etc)
-# Player is queried for input (either a letter guess or to save the game)
-# Guessed letter is checked for validity
-# If valid, checks if letter is contained in word
-# If so, fills in appropriate spaces
-# Need to keep track of all variables so we can easily save and load them:
-#   - The chosen word
-#   - Guessed letters so far
-#   - The amount of wrong guesses
-#   - The current letters filled in on the word
