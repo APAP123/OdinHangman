@@ -108,7 +108,7 @@ def draw_hangman(wrong_guesses)
   puts '                  ' + left_leg + ' ' + right_leg + '     |'
   puts '                          |'
   puts '                          |'
-  puts '             |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|'
+  puts '             |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|'
 end
 
 hangman = Hangman.new
